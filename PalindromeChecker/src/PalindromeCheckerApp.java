@@ -1,34 +1,34 @@
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
+
+    // Encapsulated palindrome checking logic
+    public boolean checkPalindrome(String word) {
+
+        // Using internal stack for reversal
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
 
-        String input = "A man a plan a canal Panama";
+        PalindromeService service = new PalindromeService();  // Encapsulation / Object
 
-        // Step 1: Normalize string
-        // Convert to lowercase and remove spaces
-        String normalized = input
-                .toLowerCase()
-                .replaceAll("\\s+", "");
+        String word1 = "radar";
+        String word2 = "hello";
 
-        // Step 2: Apply two-pointer logic
-        int start = 0;
-        int end = normalized.length() - 1;
-        boolean isPalindrome = true;
-
-        while (start < end) {
-            if (normalized.charAt(start) != normalized.charAt(end)) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
-        // Step 3: Print result
-        if (isPalindrome) {
-            System.out.println("\"" + input + "\" is a Palindrome (ignoring case & spaces).");
-        } else {
-            System.out.println("\"" + input + "\" is NOT a Palindrome.");
-        }
+        System.out.println(word1 + " is Palindrome? " + service.checkPalindrome(word1));
+        System.out.println(word2 + " is Palindrome? " + service.checkPalindrome(word2));
     }
 }
