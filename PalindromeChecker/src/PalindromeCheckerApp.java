@@ -1,12 +1,33 @@
 public class PalindromeCheckerApp {
-    static void main() {
-        System.out.println("Welcome to Palindrome Checker App");
-        System.out.println("======================================");
-        System.out.println(" Palindrome Checker - UC2 ");
-        System.out.println("======================================");
-        String input = "madam";
+
+    public static void main(String[] args) {
+
+        // Original String
+        String word = "radar";
+
+        // Convert String to character array
+        char[] characters = word.toCharArray();
+
+        // Two-pointer approach
+        int start = 0;
+        int end = characters.length - 1;
+
         boolean isPalindrome = true;
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+
+        while (start < end) {
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
+        }
+
+        // Display result
+        if (isPalindrome) {
+            System.out.println(word + " is a Palindrome.");
+        } else {
+            System.out.println(word + " is NOT a Palindrome.");
+        }
     }
 }
