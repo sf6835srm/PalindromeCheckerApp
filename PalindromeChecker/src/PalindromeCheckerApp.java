@@ -1,26 +1,30 @@
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         // Original String
-        String word = "refer";
+        String word = "madam";
 
-        // Create Stack
+        // Create Stack and Queue
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // Push characters into stack
+        // Enqueue and Push characters
         for (int i = 0; i < word.length(); i++) {
-            stack.push(word.charAt(i));
+            char ch = word.charAt(i);
+            stack.push(ch);      // LIFO
+            queue.add(ch);       // FIFO (Enqueue)
         }
 
         boolean isPalindrome = true;
 
-        // Pop and compare
-        for (int i = 0; i < word.length(); i++) {
-            char poppedChar = stack.pop();
-            if (word.charAt(i) != poppedChar) {
+        // Compare Dequeue vs Pop
+        while (!stack.isEmpty()) {
+            if (!stack.pop().equals(queue.remove())) {  // Dequeue using remove()
                 isPalindrome = false;
                 break;
             }
