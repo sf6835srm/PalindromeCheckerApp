@@ -1,12 +1,23 @@
 public class PalindromeCheckerApp {
-    static void main() {
-        System.out.println("Welcome to Palindrome Checker App");
-        System.out.println("======================================");
-        System.out.println(" Palindrome Checker - UC2 ");
-        System.out.println("======================================");
-        String input = "madam";
-        boolean isPalindrome = true;
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+
+    public static void main(String[] args) {
+
+        // Original String
+        String original = "level";
+
+        // Variable to store reversed string
+        String reversed = "";
+
+        // Reverse string using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);  // String concatenation
+        }
+
+        // Compare original and reversed using equals()
+        if (original.equals(reversed)) {
+            System.out.println(original + " is a Palindrome.");
+        } else {
+            System.out.println(original + " is NOT a Palindrome.");
+        }
     }
 }
